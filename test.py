@@ -19,9 +19,9 @@ def outer_func():
 numbers = [1, 2, 3, 4, 5]
 name, age, *job = (numbers)
 # numbers[7]
-print(list(numbers))
-if 3 in numbers:
-    print("3 is in the numbers list.")
+# print(list(numbers))
+# if 3 in numbers:
+#     print("3 is in the numbers list.")
 # print(tuple(numbers))
 # print(set(numbers))
 
@@ -70,4 +70,42 @@ class Solution:
         return verif
 
 solution = Solution()
-print(solution.isPalindrome("A man a plan a canal Panama"))
+# print(solution.isPalindrome("A man a plan a canal Panama"))
+
+
+# Check if the string is a palindrome
+def isPalindrome(s):
+    return s == s[::-1]
+
+# Backtracking function to generate all palindromic partitions
+def backtrack(idx, s, curr, res):
+    print(f"idx: {idx}, s: {s}, curr: {curr}, res: {res}")
+    if idx == len(s):
+        # Save the current valid partition
+        res.append(curr[:])  
+        return
+
+    temp = ""
+    for i in range(idx, len(s)):
+        temp += s[i]
+        print(f"item : {temp}")
+        if isPalindrome(temp):
+            # Choose substring
+            curr.append(temp)              
+            # Explore further
+            backtrack(i + 1, s, curr, res) 
+            # Backtrack
+            curr.pop()  
+        print(f"curr : {curr}, res : {res}")                   
+
+# Generate all palindromic partitions and sort them
+def palinParts(s):
+    res = []
+    backtrack(0, s, [], res)
+    return res
+
+if __name__ == "__main__":
+    s = "geeks"
+    res = palinParts(s)
+    for part in res:
+        print(" ".join(part))
