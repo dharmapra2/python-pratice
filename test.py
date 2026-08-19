@@ -1,3 +1,54 @@
+# ─────────────────────────────────────────────────────────────
+# Problem: Concatenation of Array (LC 1929)
+#          Given nums of length n, return ans of length 2n where ans = nums + nums.
+# Pattern: Array Index Mapping
+# Approach: Create ans of size 2n, then for each index i set ans[i] = ans[i+n] = nums[i].
+# Why this approach: Single pass, no extra library, directly maps both halves simultaneously.
+# Time: O(n)
+# Space: O(n)
+# Mistake: Using ans = nums + nums (works but less instructive for index practice).
+# Key insight: ans[i] and ans[i+n] are always the same value — assign both in one step.
+# ─────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────
+# Problem: Valid Anagram (LC 242)
+#          Given two strings s and t, return True if t is an anagram of s.
+# Pattern: Hash Map / Frequency Count
+# Approach: Count character frequencies in s, then decrement for each char in t.
+#           Return False if a char is missing or count hits 0 prematurely.
+# Why this approach: O(n) single-pass counting without sorting.
+# Time: O(n)
+# Space: O(1) — at most 26 keys for lowercase letters
+# Mistake: Not checking length equality upfront — saves time on obvious mismatches.
+# Key insight: Two strings are anagrams iff their character frequency maps are identical.
+# ─────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────
+# Problem: Valid Palindrome (LC 125)
+#          A phrase is a palindrome if, after lowercasing and keeping only alphanumerics,
+#          it reads the same forwards and backwards.
+# Pattern: Two Pointers
+# Approach: Filter to alphanumeric lowercase chars, then use left/right pointers moving inward.
+# Why this approach: Clean separation of filtering and checking; O(n) time and space.
+# Time: O(n)
+# Space: O(n) for the filtered list
+# Mistake: Not stripping non-alphanumeric chars before comparing — spaces/punctuation break it.
+# Key insight: isalnum() + lower() handles all edge cases cleanly before the two-pointer check.
+# ─────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────
+# Problem: Palindrome Partitioning (LC 131)
+#          Given string s, return all possible partitions where every substring is a palindrome.
+# Pattern: Backtracking
+# Approach: At each index, try every substring starting there; if it's a palindrome, add it
+#           to current partition and recurse. Backtrack by popping after recursion.
+# Why this approach: Explores all valid partitions without generating invalid ones.
+# Time: O(n * 2^n) — 2^n subsets, O(n) palindrome check each
+# Space: O(n) recursion depth
+# Mistake: Not backtracking (popping curr) after recursion — causes stale state in curr.
+# Key insight: Build the substring incrementally (temp += s[i]) to avoid repeated slicing.
+# ─────────────────────────────────────────────────────────────
+
 def outer_func():
     msg = 'Hello there!'
     res = ""  # Declare res in the enclosing scope

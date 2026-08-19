@@ -1,3 +1,14 @@
+# Problem: Remove duplicates from a sorted array in-place and return the unique portion.
+# Pattern: Two Pointers (Read / Write) on sorted array
+# Approach: write pointer tracks the last unique element's index.
+#           read pointer scans forward; when arr[read] != arr[write], advance write and copy.
+#           Return arr[:write+1].
+# Why this approach: Sorted array guarantees duplicates are adjacent, so a single pass suffices.
+# Time: O(n)
+# Space: O(1) — modifies in place (slice at return is O(k) where k = unique count)
+# Mistake: Starting read from 0 instead of 1 — comparing element with itself causes off-by-one.
+# Key insight: write pointer always points to the boundary of the "clean" unique prefix.
+
 class Solution:
     def removeDuplicates(self, arr):
         # return list(dict.fromkeys(arr))

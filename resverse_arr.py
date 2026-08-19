@@ -1,3 +1,18 @@
+# Problem: Reverse an array using multiple approaches.
+# Pattern: Two Pointers / Recursion / Stack / Built-ins
+# Approach: 6 methods shown —
+#           1. Two pointers with temp variable (manual swap)
+#           2. Slicing arr[::-1]
+#           3. Built-in arr.reverse() (in-place)
+#           4. Recursion: last element + reverse of rest
+#           5. Stack: push all, pop all
+#           6. Two pointers with tuple swap (Pythonic)
+# Why this approach: Covers the full spectrum from O(1) space in-place to O(n) space methods.
+# Time: O(n) for all approaches
+# Space: O(1) for approaches 1, 3, 6 | O(n) for 2, 4, 5
+# Mistake: In recursion (approach 4), forgetting the base case len <= 1 causes infinite recursion.
+# Key insight: Two-pointer swap (approach 6) is the most Pythonic and optimal in-place solution.
+
 class Solution:
     def reverseArray1(self, arr):
         """ using two pointer approach """

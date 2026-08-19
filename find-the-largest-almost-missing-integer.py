@@ -1,11 +1,19 @@
-# Problem:
-# Pattern:
-# Approach:
-# Why this approach:
-# Time:
-# Space:
-# Mistake:
-# Key insight:
+# Problem: Find the Largest Almost Missing Integer (LC 3471)
+#          Given nums and k, return the largest integer that appears in exactly one subarray of size k, or -1.
+# Pattern: Sliding Window / Frequency Count
+# Approach: Handle 3 cases:
+#           1. k == n → every element is in exactly one subarray (the whole array), return max(nums)
+#           2. k == 1 → every single element is its own subarray, return max of elements with count == 1
+#           3. 1 < k < n → only nums[0] and nums[-1] can appear in exactly one subarray of size k;
+#              check if their frequency is 1 and return the larger one
+# Why this approach: For case 3, a subarray of size k slides from index 0 to n-k.
+#                    nums[0] only appears in the first window, nums[-1] only in the last.
+#                    All middle elements appear in at least 2 windows.
+# Time: O(n)
+# Space: O(n) for the Counter
+# Mistake: Forgetting that middle elements always appear in multiple windows when 1 < k < n
+# Key insight: Only boundary elements (first and last) can be "almost missing" when 1 < k < n
+
 from typing import List
 from collections import Counter
 

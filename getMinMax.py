@@ -1,3 +1,14 @@
+# Problem: Find the minimum and maximum element in an array.
+# Pattern: Pair Comparison / Tournament Method
+# Approach: Initialize min/max from the first pair, then process remaining elements in pairs.
+#           Compare the two elements of each pair against each other first, then update min/max.
+# Why this approach: Processing in pairs reduces comparisons from 2*(n-1) to ~1.5*n,
+#                    which is the optimal comparison count.
+# Time: O(n)
+# Space: O(1)
+# Mistake: Not handling the odd-length array edge case (single leftover element at the end).
+# Key insight: Comparing pairs internally before comparing with global min/max saves one comparison per pair.
+
 class Solution:
     def getMinMax(self, arr):
         n = len(arr)
